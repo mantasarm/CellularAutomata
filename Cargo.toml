@@ -1,0 +1,13 @@
+[package]
+name = "miniquadtestt"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+miniquad = { version = "0.3.0-alpha.26" }
+egui = "0.17.0"
+egui-miniquad = "0.10.0"
+glam = "0.21.2"
+fastrand = "1.7.0"
