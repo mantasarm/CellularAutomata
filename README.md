@@ -1,3 +1,3 @@
 # CellularSimulation
 Cellular automata in rust
-![image](https://user-images.githubusercontent.com/34283640/181836476-ec94edfd-c343-4459-9d97-6fa817892361.png)
+![image](https://user-images.githubusercontent.com/34283640/181837166-96f432e3-7762-4639-951f-fde47b1396df.png)
