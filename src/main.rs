@@ -154,6 +154,10 @@ impl  Game {
                 if ui.button("Ice").clicked() {
                     self.selected_cell = Cell::new(ElementData::ice_element());
                 }
+                
+                if ui.button("Gasoline").clicked() {
+                    self.selected_cell = Cell::new(ElementData::gasoline_element());
+                }
             });
         });
         

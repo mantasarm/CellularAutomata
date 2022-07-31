@@ -202,6 +202,26 @@ impl CellGrid {
                             self.cells[i][j].element_data = ElementData::water_element();
                         }
                     }
+                    
+                    CellType::Gasoline => {
+                        if self.cells[i][j].heat_value > 250f32 && !self.cells[i][j].active {
+                            self.cells[i][j].active = true;
+                            self.cells[i][j].element_data.lifetime = 120;
+                        }
+                        
+                        if self.cells[i][j].active {
+                            self.cells[i][j].element_data.lifetime -= fastrand::i16(1..=3);
+                            self.burn(i, j, 0.20, 90);
+                        }
+                        
+                        self.liquid_movement(i, j);
+                                                
+                        if self.cells[i][j].element_data.lifetime < 0 && self.cells[i][j].active {
+                            self.cells[i][j].element_data = ElementData::air_element();
+                            self.cells[i][j].active = false;
+                        }
+                        
+                    }
 
                     _ => ()
                 }
@@ -381,7 +401,7 @@ impl Cell {
 #[derive(Copy, Clone, Debug)]
 #[derive(PartialEq, Eq)]
 pub enum CellType {
-        Air, Sand, Solid, Water, Steam, Fire, Coal, SawDust, Methane, Lava, ColdFire, Ice
+        Air, Sand, Solid, Water, Steam, Fire, Coal, SawDust, Methane, Lava, ColdFire, Ice, Gasoline
 }
 
 #[derive(Copy, Clone)]
@@ -438,6 +458,10 @@ impl ElementData {
     
     pub fn ice_element() -> Self {
         Self { cell_type: CellType::Ice, color: (112, 169, 229, 255), state: State::Solid, lifetime: -1, emitting_heat: -8f32 }
+    }
+    
+    pub fn gasoline_element() -> Self {
+        Self { cell_type: CellType::Gasoline, color: (220, 207, 61, 255), state: State::Solid, lifetime: -1, emitting_heat: 0f32 }
     }
 }
 
