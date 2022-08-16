@@ -1,8 +1,8 @@
 use crate::{engine::shape_renderer::ShapeBatch, heap_array};
 
 
-pub const COLS: i32 = 210;
-pub const ROWS: i32 = 210;
+pub const COLS: i32 = 220;
+pub const ROWS: i32 = 220;
 
 pub struct CellGrid {
     cols: u32,
@@ -151,7 +151,7 @@ impl CellGrid {
                         if self.cells[i][j].heat_value > 250f32 && !self.cells[i][j].active {
                             self.cells[i][j].active = true;
                             self.cells[i][j].element_data.lifetime = 300;
-                            self.cells[i][j].element_data.color = (50, 30, 29, 255)
+                            self.cells[i][j].element_data.color = (40, 35, 30, 255)
                         }
                         
                         if self.cells[i][j].active {
@@ -283,11 +283,11 @@ impl CellGrid {
                 }
             }
         } else if fastrand::bool() {
-            if self.cells[i + 1][j].element_data.state == State::Gas || self.cells[i + 1][j].element_data.state == State::Plasma {
+            if self.cells[i + 1][j].element_data.state != State::Solid {
                 self.swaps.push(Swap::new_usize(i, j, i + 1, j));
             }
         } else {
-            if self.cells[i - 1][j].element_data.state == State::Gas || self.cells[i - 1][j].element_data.state == State::Plasma {
+            if self.cells[i - 1][j].element_data.state != State::Solid {
                 self.swaps.push(Swap::new_usize(i, j, i - 1, j));
             }
         }

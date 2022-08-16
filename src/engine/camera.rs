@@ -52,7 +52,7 @@ impl Camera {
             cam_up
         );
 
-        self.view_matrix.inverse();
+        //self.view_matrix.inverse();
 
         self.view_matrix
     }

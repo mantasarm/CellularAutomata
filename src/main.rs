@@ -1,8 +1,10 @@
+#![windows_subsystem = "windows"]
+
 mod engine;
 mod grid;
 mod heap_array;
 
-use egui::Pos2;
+use egui::{Pos2, RichText, Color32};
 use engine::{camera::Camera, shape_renderer::ShapeBatch, engine::Info, engine::start_engine};
 use grid::{CellGrid, Cell, ElementData, COLS};
 use miniquad::Context;
@@ -107,7 +109,7 @@ impl  Game {
             ui.separator();
 
             ui.horizontal_wrapped(|ui| {
-                if ui.button("Air").clicked() {
+                if ui.button(RichText::new("Air").color(Color32::WHITE)).clicked() {
                     self.selected_cell = Cell::new(ElementData::air_element())
                 }
     
@@ -115,47 +117,47 @@ impl  Game {
                     self.selected_cell = Cell::new(ElementData::solid_element())
                 }
     
-                if ui.button("Sand").clicked() {
+                if ui.button(RichText::new("Sand").color(Color32::from_rgb(243, 239, 118))).clicked() {
                     self.selected_cell = Cell::new(ElementData::sand_element())
                 }
     
-                if ui.button("Water").clicked() {
+                if ui.button(RichText::new("Water").color(Color32::from_rgb(18, 24, 204))).clicked() {
                     self.selected_cell = Cell::new(ElementData::water_element())
                 }
 
-                if ui.button("Steam").clicked() {
+                if ui.button(RichText::new("Steam").color(Color32::from_rgb(195, 225, 247))).clicked() {
                     self.selected_cell = Cell::new(ElementData::steam_element())
                 }
 
-                if ui.button("Fire").clicked() {
+                if ui.button(RichText::new("Fire").color(Color32::from_rgb(214, 32, 19))).clicked() {
                     self.selected_cell = Cell::new(ElementData::fire_element(80))
                 }
 
-                if ui.button("Coal").clicked() {
+                if ui.button(RichText::new("Coal").color(Color32::LIGHT_GRAY)).clicked() {
                     self.selected_cell = Cell::new(ElementData::coal_element())
                 }
                 
-                if ui.button("SawDust").clicked() {
+                if ui.button(RichText::new("Saw dust").color(Color32::from_rgb(219, 199, 120))).clicked() {
                     self.selected_cell = Cell::new(ElementData::sawdust_element())
                 }
                 
-                if ui.button("Methane").clicked() {
+                if ui.button(RichText::new("Methane").color(Color32::from_rgb(133, 191, 47))).clicked() {
                     self.selected_cell = Cell::new(ElementData::methane_element())
                 }
                 
-                if ui.button("Lava").clicked() {
+                if ui.button(RichText::new("Lava").color(Color32::from_rgb(150, 59, 28))).clicked() {
                     self.selected_cell = Cell::new(ElementData::lava_element());
                 }
                 
-                if ui.button("Cold fire").clicked() {
+                if ui.button(RichText::new("Cold fire").color(Color32::from_rgb(59, 205, 219))).clicked() {
                     self.selected_cell = Cell::new(ElementData::coldfire_element(80));
                 }
                 
-                if ui.button("Ice").clicked() {
+                if ui.button(RichText::new("Ice").color(Color32::from_rgb(112, 169, 229))).clicked() {
                     self.selected_cell = Cell::new(ElementData::ice_element());
                 }
                 
-                if ui.button("Gasoline").clicked() {
+                if ui.button(RichText::new("Gasoline").color(Color32::from_rgb(220, 207, 61))).clicked() {
                     self.selected_cell = Cell::new(ElementData::gasoline_element());
                 }
             });
