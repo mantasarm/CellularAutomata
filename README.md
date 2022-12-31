@@ -1,5 +1,4 @@
-# CellularSimulation
-Cellular automata in rust
+# Sandbox
 
 Features 12 elements to play around with (Ice, water, steam are counted as separate elements) and basic tempeture spread simulation.
 Default grid size 220 * 220 (48400 individual cells) but bigger grid sizes are supported. Uses miniquad for rendering.
